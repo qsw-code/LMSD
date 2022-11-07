@@ -12,6 +12,8 @@
 * Download the GloVe embedding (840B,300d)  (https://nlp.stanford.edu/projects/glove/)
 
 ## Train and Test
+Run main.py for train and test datasets with tokenized texts as follows:
+'''bash
 python main.py --data 'Wiki10-31K' --la 1.0 --ba 1.0 --emb_num 256 --n_negative 1000
 
 
