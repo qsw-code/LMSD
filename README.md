@@ -13,8 +13,7 @@
 
 ## Train and Test
 Run main.py for train and test datasets with tokenized texts as follows:
-'''bash
+```bash
 python main.py --data 'Wiki10-31K' --la 1.0 --ba 1.0 --emb_num 256 --n_negative 1000
-
-'''
+```
 
