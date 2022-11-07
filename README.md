@@ -5,7 +5,11 @@
 * tensorflow==2.7.0
 
 ## Datasets
+* [Reuter](https://archive.ics.uci.edu/ml/datasets/Reuters-
+21578+Text+Categorization+Collection)
+* [EUR-Lex](https://drive.google.com/open?id=1iPGbr5-z2LogtMFG1rwwekV_aTubvAb2)
 * [Wiki10-31K](https://drive.google.com/open?id=1Tv4MHQzDWTUC9hRFihRhG8_jt1h0VhnR)
+* [CiteULike-t](https://citeulike.org/faq/data.adp/)
 * Download the GloVe embedding (840B,300d)  (https://nlp.stanford.edu/projects/glove/)
 
 ## Train and Test
