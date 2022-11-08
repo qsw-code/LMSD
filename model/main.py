@@ -44,7 +44,7 @@ def main(data,la,ba,emb_num,n_negative):
 	word_dim = 300
 
 	# Read Glove word vectors
-	pretrain_w2v = f'../glove/glove.6B.{word_dim}d.txt'
+	pretrain_w2v = f'../glove/glove.840B.{word_dim}d.txt'
 	if pretrain_w2v is None:
 	    init_WV = None
 	else:
