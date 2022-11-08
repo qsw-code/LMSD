@@ -1,6 +1,6 @@
 # LMSD
 ## Requirements
-
+[Learning Metric Space with Distillation for Large-Scale Multi-Label Text Classification]
 * python==3.8.8
 * tensorflow==2.7.0
 
