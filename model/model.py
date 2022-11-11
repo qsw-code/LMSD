@@ -34,25 +34,14 @@ class Text_encoder(tf.keras.Model):
 
 		self.embedding = Embedding(vocab_size, word_dim, weights=[init_WV], trainable=True)
 		self.bigru = Bidirectional(LSTM(num_kel, return_sequences=True), merge_mode='sum')
-		#self.drop = Dropout(0.5)
-		#self.drop_1 = Dropout(0.2)
+
 		self.self_att = Attention(100)
 		self.fc = Dense(emb_num,activation='tanh')
 
 
 	def call(self,inputs,train=True):
 		input_emb = self.embedding(inputs)
-		'''
-		if train:
-			input_emb = self.drop_1(input_emb)
-			gru_seq=self.bigru(input_emb)
-			gru_seq = self.drop(gru_seq)
-		else:
-			gru_seq=self.bigru(input_emb)
-		'''
-		
 		gru_seq=self.bigru(input_emb)
-
 		output = self.self_att(gru_seq)
 		#output = tf.math.l2_normalize(output,axis=2)
 		output = self.fc(output)
@@ -70,10 +59,7 @@ class doc_label_metric(tf.keras.Model):
         self.text_embeddings = tf.Variable(tf.random.normal([n_text,tag_dim], stddev=0.01),trainable=True)
         self.lamba = lamba
         self.beta = beta
-        #self.tag_embeddings = tf.math.l2_normalize(self.tag_embeddings,axis=1)
-        #self.text_embeddings = tf.math.l2_normalize(self.text_embeddings)
-        #self.B = tf.Variable(np.array([1.0]*n_text), dtype=tf.float32,trainable=True)
-        #self.B1 = tf.Variable(np.array([1.0]*n_tags),dtype=tf.float32,trainable=True)
+
     
     def call(self,doc_id,pos_tag,neg_tag):
 
@@ -128,16 +114,12 @@ class doc_label_metric(tf.keras.Model):
         pred_distance_neg =  max_neg_production
         pred_distance_PN =  pos_max_neg_production
 
-
-        #a = tf.maximum(-pred_distance + pred_distance_neg + bias, 0)
-        #b = tf.maximum(-pred_distance + pred_distance_PN + pbias,0)
-
         a = -tf.math.log(tf.sigmoid(pred_distance-pred_distance_neg))
         b = -tf.math.log(tf.sigmoid(pred_distance-pred_distance_PN))
          
         #whole model
         loss= self.lamba*tf.reduce_mean(a) + self.beta*tf.reduce_mean(b)
-        #loss=loss-1*(10*(tf.reduce_mean(bias) +tf.reduce_mean(pbias)))
+
 
         return loss
     	
