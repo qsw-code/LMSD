@@ -17,3 +17,21 @@ Run main.py for train and test datasets with tokenized texts as follows:
 python main.py --data 'Wiki10-31K' --la 1.0 --ba 1.0 --emb_num 256 --n_negative 1000
 ```
 
+If you use the code, please cite the following [paper](https://link.springer.com/article/10.1007/s00521-023-08308-3):
+
+```
+@article{DBLP:journals/nca/QinWZLD23,
+  author       = {Shaowei Qin and
+                  Hao Wu and
+                  Lihua Zhou and
+                  Jiahui Li and
+                  Guowang Du},
+  title        = {Learning metric space with distillation for large-scale multi-label
+                  text classification},
+  journal      = {Neural Comput. Appl.},
+  volume       = {35},
+  number       = {15},
+  pages        = {11445--11458},
+  year         = {2023}
+}
+```
